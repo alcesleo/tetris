@@ -9,15 +9,21 @@ class Grid
     @squares << square
   end
 
-  def blocked?(x)
-    x < 0 || x >= @columns
+  def blocked?(x, y)
+    x < 0 || x >= @columns || occupied?(x, y)
   end
 
   def landed?(x, y)
-    y >= @rows - 1 || @squares.any? { |square| square.occupies?(x, y + 1) }
+    y >= @rows - 1 || occupied?(x, y + 1)
   end
 
   def draw
     @squares.each(&:draw)
+  end
+
+  private
+
+  def occupied?(x, y)
+    @squares.any? { |square| square.occupies?(x, y) }
   end
 end

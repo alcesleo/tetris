@@ -17,7 +17,7 @@ class Square
   end
 
   def blocked?(offset_x, grid)
-    grid.blocked?(@x + offset_x)
+    grid.blocked?(@x + offset_x, @y)
   end
 
   def landed?(grid)
