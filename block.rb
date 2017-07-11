@@ -1,6 +1,12 @@
 class Block
   SHAPES = [
-    [[[0, 0], [0, 1], [1, 0], [1, 1]], Gosu::Color::AQUA]
+    [[[0, 0], [0, 1], [1, 0], [1, 1]], Gosu::Color::BLUE],
+    [[[0, 0], [0, 1], [0, 2], [0, 3]], Gosu::Color::AQUA],
+    [[[0, 0], [1, 0], [1, 1], [2, 1]], Gosu::Color::RED],
+    [[[0, 1], [1, 1], [1, 0], [2, 0]], Gosu::Color::GREEN],
+    [[[0, 0], [1, 0], [1, 1], [1, 2]], Gosu::Color.argb(0xff_ffa500)],
+    [[[0, 0], [1, 0], [0, 1], [0, 2]], Gosu::Color::YELLOW],
+    [[[1, 0], [0, 1], [1, 1], [2, 1]], Gosu::Color::FUCHSIA]
   ]
 
   def self.random(grid)
