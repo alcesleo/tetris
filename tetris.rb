@@ -24,6 +24,14 @@ class Tetris < Gosu::Window
   def update
     if Gosu.milliseconds - @time > FALL_INTERVAL
       @time = Gosu.milliseconds
+      step
+    end
+  end
+
+  def step
+    if @active_block.landed?
+      @active_block = Block.random(@grid)
+    else
       @active_block.fall
     end
   end

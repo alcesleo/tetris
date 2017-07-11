@@ -19,7 +19,11 @@ class Block
   end
 
   def fall
-    move(y: 1)
+    move(y: 1) unless landed?
+  end
+
+  def landed?
+    @squares.any? { |square| square.landed?(@grid) }
   end
 
   def move_right

@@ -12,4 +12,8 @@ class Grid
   def blocked?(x)
     x < 0 || x >= @columns
   end
+
+  def landed?(x, y)
+    y >= @rows -1
+  end
 end
