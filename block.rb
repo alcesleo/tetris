@@ -22,6 +22,10 @@ class Block
     move(y: 1) unless landed?
   end
 
+  def land
+    @squares.each { |square| @grid.land(square) }
+  end
+
   def landed?
     @squares.any? { |square| square.landed?(@grid) }
   end

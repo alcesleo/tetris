@@ -5,7 +5,7 @@ class Grid
     @squares = []
   end
 
-  def add_square(square)
+  def land(square)
     @squares << square
   end
 
@@ -15,5 +15,9 @@ class Grid
 
   def landed?(x, y)
     y >= @rows -1
+  end
+
+  def draw
+    @squares.each(&:draw)
   end
 end

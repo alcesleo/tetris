@@ -19,6 +19,7 @@ class Tetris < Gosu::Window
   def draw
     Gosu.draw_rect(0, 0, width, height, Gosu::Color::GRAY)
     @active_block.draw
+    @grid.draw
   end
 
   def update
@@ -30,6 +31,7 @@ class Tetris < Gosu::Window
 
   def step
     if @active_block.landed?
+      @active_block.land
       @active_block = Block.random(@grid)
     else
       @active_block.fall
