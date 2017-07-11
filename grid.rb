@@ -14,7 +14,7 @@ class Grid
   end
 
   def landed?(x, y)
-    y >= @rows -1
+    y >= @rows - 1 || @squares.any? { |square| square.occupies?(x, y + 1) }
   end
 
   def draw

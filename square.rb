@@ -23,4 +23,8 @@ class Square
   def landed?(grid)
     grid.landed?(@x, @y)
   end
+
+  def occupies?(x, y)
+    @x == x && @y == y
+  end
 end
