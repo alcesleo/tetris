@@ -9,10 +9,6 @@ class Grid
     @squares << square
   end
 
-  def destroy(square)
-    @squares.delete(square)
-  end
-
   def blocked?(x, y)
     x < 0 || x >= @columns || occupied?(x, y)
   end
@@ -22,9 +18,12 @@ class Grid
   end
 
   def destroy_completed_rows
-    completed_rows.each do |row|
-      row.each do |square|
-        destroy(square)
+    (0...@rows).each do |y|
+      row = row(y)
+
+      if row.length == @columns
+        destroy(row)
+        drop(y)
       end
     end
   end
@@ -35,15 +34,19 @@ class Grid
 
   private
 
+  def row(y)
+    @squares.select { |square| square.occupies_row?(y) }
+  end
+
+  def drop(y)
+    @squares.each { |square| square.fall_towards(y) }
+  end
+
+  def destroy(squares)
+    @squares -= squares
+  end
+
   def occupied?(x, y)
     @squares.any? { |square| square.occupies?(x, y) }
-  end
-
-  def completed_rows
-    squares_in_rows.select { |row| row.length == @columns }
-  end
-
-  def squares_in_rows
-    (0..@rows).map { |row| @squares.select { |square| square.occupies_row?(row) } }
   end
 end
