@@ -20,6 +20,16 @@ class Square
     @y += y
   end
 
+  def place(matrix)
+    matrix[@x, @y] = self
+  end
+
+  def move_relative_to_matrices(matrix1, matrix2)
+    x1, y1 = matrix1.find(self)
+    x2, y2 = matrix2.find(self)
+    move(x: x2 - x1, y: y2 - y1)
+  end
+
   def blocked?(offset_x, grid)
     grid.blocked?(@x + offset_x, @y)
   end

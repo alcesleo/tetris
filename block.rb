@@ -28,6 +28,14 @@ class Block
     move(y: 1) unless landed?
   end
 
+  def rotate
+    matrix = Matrix.new
+    @squares.each { |square| square.place(matrix) }
+    matrix.trim
+    rotated_matrix = matrix.rotate
+    @squares.each { |square| square.move_relative_to_matrices(matrix, rotated_matrix) }
+  end
+
   def land
     @squares.each { |square| @grid.land(square) }
   end

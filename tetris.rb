@@ -2,6 +2,7 @@ require "gosu"
 require_relative "grid"
 require_relative "square"
 require_relative "block"
+require_relative "matrix"
 
 class Tetris < Gosu::Window
   COLUMNS = 10
@@ -44,6 +45,7 @@ class Tetris < Gosu::Window
     when Gosu::KbLeft then @active_block.move_left
     when Gosu::KbRight then @active_block.move_right
     when Gosu::KbDown then @active_block.fall
+    when Gosu::KbUp then @active_block.rotate
     when Gosu::KbEscape then close
     end
   end
