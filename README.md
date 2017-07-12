@@ -1,5 +1,7 @@
 # Tetris
 
+![screenshot](screenshot.png)
+
 ## Installation
 
 You need [Homebrew](https://brew.sh/) installed.
