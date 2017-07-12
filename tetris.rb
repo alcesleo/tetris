@@ -32,6 +32,7 @@ class Tetris < Gosu::Window
   def step
     if @active_block.landed?
       @active_block.land
+      @grid.destroy_completed_rows
       @active_block = Block.random(@grid)
     else
       @active_block.fall

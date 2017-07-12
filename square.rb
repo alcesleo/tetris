@@ -27,4 +27,8 @@ class Square
   def occupies?(x, y)
     @x == x && @y == y
   end
+
+  def occupies_row?(y)
+    @y == y
+  end
 end
